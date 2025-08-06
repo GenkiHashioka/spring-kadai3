@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ランダム文字列ジェネレータ</title>
+</head>
+<body>
+  <!-------------------------------------------------
+  問題2 問題3 ランダム文字列ジェネレータの初期画面を作成する。
+   -------------------------------------------------->
+
+  <!-- 見出し -->
+  <h1>ランダム文字列ジェネレータ</h1>
+  <form action="/generate" method="post">
+
+    <!-- 文字数 -->
+    <label>
+      <select name="length">
+        <!-- thymeleafのユーティリティ関数を使用して5~10までのセレクトボックスを作成する -->
+        <option th:each="i : ${#numbers.sequence(5,10)}" th:value="${i}" th:text="${i}"></option>
+      </select>
+    </label>
+
+    <!-- 数字を含めるチェックボックス -->
+    <label>
+      <input type="checkbox" name="includeNumber"> 数字を含める
+    </label>
+    <br>
+
+    <!-- 個数の指定 -->
+     <label>
+      <!-- 数字指定のテキストボックス最小値は1 -->
+      <input type="number" name="count" min="1">個作成する
+     </label>
+     <br>
+     <br>
+     <button>作成する</button>
+  </form>
+  <hr>
+  <!-- 結果表示 -->
+  <table>
+    <tr th:each="str:${results}">
+      <td th:text="${str}"></td>
+    </tr>
+  </table>
+</body>
+</html>
