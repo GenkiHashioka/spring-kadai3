@@ -12,6 +12,11 @@
 
   <!-- 見出し -->
   <h1>ランダム文字列ジェネレータ</h1>
+  
+  <!-- エラーメッセージの表示 -->
+   <div th:if="${error}" style="color: red">
+    <p th:text="${error}"></p>
+   </div>
   <form action="/generate" method="post">
 
     <!-- 文字数 -->
@@ -26,6 +31,10 @@
     <label>
       <input type="checkbox" name="includeNumber" value="1"> 数字を含める
     </label>
+    <label>
+      <!-- 問題4の追加機能（英字を含めるチェックボックスの追加） -->
+      <input type="checkbox" name="includeAlpha" value="1">英字を含める
+     </label>
     <br>
 
     <!-- 個数の指定 -->
