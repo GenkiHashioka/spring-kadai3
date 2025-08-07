@@ -54,6 +54,11 @@ public class RandomStringController {
 		mv.addObject("results", results);
 //	ModelAndViewの値をrandom.htmlにセットする。
 		mv.setViewName("random");
+//		画面に条件を引き継ぐために追加する。
+		mv.addObject("length", length);
+		mv.addObject("count", count);
+		mv.addObject("includeNumber", includeNumberFlag); // th:checkedはbooleanの返却を期待しているためbooleanで渡す
+		mv.addObject("includeAlpha", includeAlphaFlag);
 //		ModelAndView型のmvを返り値に指定。
 		return mv;
 		

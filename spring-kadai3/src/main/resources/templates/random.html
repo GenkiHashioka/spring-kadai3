@@ -23,24 +23,27 @@
     <label>
       <select name="length">
         <!-- thymeleafのユーティリティ関数を使用して5~10までのセレクトボックスを作成する -->
-        <option th:each="i : ${#numbers.sequence(5,10)}" th:value="${i}" th:text="${i}"></option>
+         <!-- セレクトボックスの状態を保持するためのth:selectedを追加 -->
+        <option th:each="i : ${#numbers.sequence(5,10)}" th:value="${i}" th:text="${i}" th:selected="${i == length}"></option>
       </select>
     </label>
 
     <!-- 数字を含めるチェックボックス -->
+     <!-- それぞれのチェックボックスに状態保持用のth:checkedを追加 -->
     <label>
-      <input type="checkbox" name="includeNumber" value="1"> 数字を含める
+      <input type="checkbox" name="includeNumber" value="1" th:checked="${includeNumber}"> 数字を含める
     </label>
     <label>
       <!-- 問題4の追加機能（英字を含めるチェックボックスの追加） -->
-      <input type="checkbox" name="includeAlpha" value="1">英字を含める
+      <input type="checkbox" name="includeAlpha" value="1" th:checked="${includeAlpha}">英字を含める
      </label>
     <br>
 
     <!-- 個数の指定 -->
      <label>
       <!-- 数字指定のテキストボックス最小値は1 -->
-      <input type="number" name="count" min="1">個作成する
+       <!-- 入力状態保持用のth:valueを追加 -->
+      <input type="number" name="count" min="1" th:value="${count}">個作成する
      </label>
      <br>
      <br>
