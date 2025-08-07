@@ -17,5 +17,15 @@
       <button>占ってみる</button>
     </label>
   </form>
+  <br>
+  <!-- 結果表示 (monthが存在する時のみ表示するようにする)-->
+   <div th:if="${month != null}">
+    <p th:text="${month} + '月の運勢は、、、'"></p>
+    <ul>
+      <li th:text="'ラッキーアイテム: ' + ${luckyItem}"></li>
+      <li th:text="'ラッキーカラー: ' + ${luckyColor}"></li>
+      <li th:text="'順位: ' + ${ranking}"></li>
+    </ul>
+   </div>
 </body>
 </html>
