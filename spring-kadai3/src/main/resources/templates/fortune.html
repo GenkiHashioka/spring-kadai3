@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>占い</title>
+</head>
+<body>
+  <h1>占いたい月を入力してね</h1>
+  <form action="/fortune" method="get">
+    <label>
+      <select name="month">
+        <option th:each="i : ${#numbers.sequence(1,12)}" th:value="${i}" th:text="${i}"></option>
+      </select>月
+    </label>
+    <label>
+      <button>占ってみる</button>
+    </label>
+  </form>
+</body>
+</html>
