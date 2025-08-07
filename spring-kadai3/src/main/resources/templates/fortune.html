@@ -19,12 +19,13 @@
   </form>
   <br>
   <!-- 結果表示 (monthが存在する時のみ表示するようにする)-->
-   <div th:if="${month != null}">
-    <p th:text="${month} + '月の運勢は、、、'"></p>
+   <div th:if="${fortune != null}">
+    <p th:text="${fortune.month} + '月の運勢は、、、'"></p>
     <ul>
-      <li th:text="'ラッキーアイテム: ' + ${luckyItem}"></li>
-      <li th:text="'ラッキーカラー: ' + ${luckyColor}"></li>
-      <li th:text="'順位: ' + ${ranking}"></li>
+      <!-- Modelのgetterを使用して値を取得 -->
+      <li th:text="'ラッキーアイテム: ' + ${fortune.luckyItem}"></li>
+      <li th:text="'ラッキーカラー: ' + ${fortune.luckyColor}"></li>
+      <li th:text="'順位: ' + ${fortune.ranking}"></li>
     </ul>
    </div>
 </body>

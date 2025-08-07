@@ -15,14 +15,21 @@ public class FortuneController {
 	}
 	
 	// step5 問題2 結果の表示
-	@RequestMapping("/fortune")
+	@RequestMapping(value = "/fortune")
 	// リクエストパラメータでmonthを引数に受け取る
 	public ModelAndView fortune(@RequestParam("month") int month, ModelAndView mv) {
 //		step5 結果はとりあえず固定
-		mv.addObject("month", 1);
-		mv.addObject("luckyItem", "カバン");
-		mv.addObject("luckyColor", "白");
-		mv.addObject("ranking", 3);
+//		mv.addObject("month", month);
+//		mv.addObject("luckyItem", "カバン");
+//		mv.addObject("luckyColor", "白");
+//		mv.addObject("ranking", 3);
+//		mv.setViewName("fortune");
+//		return mv;
+//		Fortuneクラスの呼び出し
+		Fortune fortune = new Fortune(month);
+//		mvにfortuneを格納
+		mv.addObject("fortune", fortune);
+//		fortune.htmlにセット
 		mv.setViewName("fortune");
 		return mv;
 	}
